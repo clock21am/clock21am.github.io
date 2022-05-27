@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="Personal Blogging Website" content="">
-    <meta name="Rajdeep Kaur" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-   <title>Rajdeep Kaur</title>
+    <title>Rajdeep Kaur</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -37,6 +37,13 @@
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="index.html">Home</a>
+            </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -48,10 +55,10 @@
                         <a href="about.html">About</a>
                     </li>
                     <li>
-                        <a href="contact.html">Contact</a>
+                        <a href="post.html">Post</a>
                     </li>
-                     <li>
-                        <a href="RajdeepKaurResume.pdf" tabindex="-1"><strong>Resume</strong></a>
+                    <li>
+                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -62,53 +69,43 @@
 
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('img/home-bg.jpg')">
+    <header class="intro-header" style="background-image: url('img/database.jpg')">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>One day at a time</h1>
-                        <hr class="small">
-                        <span class="subheading">Rajdeep Kaur</span>
+                <div class="col-lg-6 col-lg-offset-1 col-md-6 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1>AWS remote Postgres DB backup</h1>
+                        <span class="meta">By Rajdeep Kaur</span>
                     </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-preview">
-                    <a href="post.html">
-                        <h2 class="post-title">
-                            Handling conflicts of elastic search
-                        </h2>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Rajdeep Kaur</a> on 3rd July 2018</p>
+    <!-- Post Content -->
+    <article>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p>After googling for sometime I thought of connecting my database with the help psql after I will connect I will use pg_dump but didn’t work then I thought of trying with pgadmin3. with it I was able to download a empty dump file as aws has some rds-admin because of which we cannot take dump after we connecting to database as a specific role.</p>
+
+                    <p>Then i thought of a hack that 😜</p>
+
+                    <p><b>pg_dumpdatabase_ name > dumpfile.sql</b></p>
+
+                    <p>will give me the download dump of particular db. Why not without entring inside the db take the dump and the it won’t show the permission denied. then i got the following command to download dump of remote db</p>
+
+                    <p><b>pg_dump -h <hostname>evo10 > dumpfile.sql</b></p>
+
+                    <p>But the above didn’t work for me as by default it was taking rdsadmin as user name so with some i combined the psql login command with pg_dump command.</p>
+
+                    <p><b>pg_dump -h <xxxxxxx-hostname> -U user-name -d dbname > dump.sql</b></p>
+
+                    <p>Hope this helps to you all 😃 😄 😉.</p>
                 </div>
-                <hr>
-                <hr>
-                <hr>
-                <div class="post-preview">
-                    <a href="remote_db_backup.html">
-                        <h2 class="post-title">
-                            AWS remote Postgres DB backup
-                        </h2>
-                    </a>
-                    <p class="post-meta">Posted by <a href="#">Rajdeep Kaur</a> on July 8, 2018</p>
-                </div>
-                <hr>
-                <!-- Pager -->
-                <ul class="pager">
-                    <li class="next">
-                        <a href="#">Older Posts &rarr;</a>
-                    </li>
-                </ul>
             </div>
         </div>
-    </div>
+    </article>
 
     <hr>
 
